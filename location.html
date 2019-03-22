@@ -1,0 +1,341 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- views/partials/head.ejs -->
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Conference on Non-Equilibirum Systems</title>
+<meta name="description" content="CONES conference website">
+<meta name="author" content="Andrew Lane">
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<!-- maximum-scale=1 prevents mobile users zooming in -->
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/custom.css">
+
+<!--  favicon -->
+<link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+
+<!-- Twitter card meta data -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@CANES_CDT" />
+<meta name="twitter:creator" content="@alanescience" />
+<meta name="twitter:title" content="Conference on Non-Equilibrium Systems" />
+<meta name="twitter:description" content="Official website for the 2018 CONES conference" />
+<meta name="twitter:image" content="img/favicon-260x260.png" />
+
+	<style>
+		#map {
+			width: 100%;
+			height: 400px;
+			background-color: grey;
+		}
+	</style>
+</head>
+
+<body class="code-snippets-visible" id="home">
+	<header>
+		<!-- views/partials/header.ejs -->
+
+<div class="logo-wrap">
+  <a href="/" class="logo logo-normal">
+    <img src="img/cones18-logo-white.png" alt="CONES 2018">
+  </a>
+  <a href="/" class="logo logo-rollover">
+    <img src="img/cones18-logo-grey.png" alt="CONES 2018">
+  </a>
+</div> <!-- close logo-wrap div -->
+
+<div class="to_nav">
+  <a href="#primary_nav">
+    <i class="fa fa-3x fa-bars" aria-hidden="true"></i>
+  </a>
+</div>
+
+	</header>
+
+<div class="container">
+	<section id="page-title">
+		<h2 class="title">Location</h2>
+	</section>
+
+	<div class="docs-section" id="location-info">
+	  <p>
+	    The conference will take place at King's College
+	    London, <a href="img/strandmap.jpg" target="_blank">Strand
+	      Campus</a>, in the centre of
+	    London. See <a href="https://www.google.co.uk/maps/search/lodging+near+Strand,+London+WC2R+2LS/data=!3m1!4b1!4m5!2m4!5m3!5m2!1s2018-06-25!2i2"
+			   target="_blank">links</a> for nearby accommodation.
+	  </p>
+	  <h4>Arrival at the conference</h4>
+	  <p>
+	    On the first day you have registered to attend the conference,
+	    please report to the <strong>Strand building reception</strong> at
+	    the below address. On the Strand campus <a href="img/strandmap.jpg"
+	    target="_blank">map</a> the Strand building is labelled 'B' and
+	    coloured green.
+	  </p>
+	  <p style="text-align:center">
+	    Strand building<br>
+	    Strand Campus<br>
+	    King’s College London<br>
+	    London<br>
+	    WC2R 2LS
+	  </p>
+	  <p>
+	    Registration will begin at 9:00 each day and take place in room
+	    K0.20. Talks will begin at 9:30.
+	  </p>
+	</div>
+	
+	<h4>Travel and Accommodation</h4>
+	<div id="map"></div>
+	<div>
+	<script>
+
+	var map
+	var infowindow
+
+		function initMap() {
+			var location = {lat: 51.512097, lng:-0.116779}
+
+			map = new google.maps.Map(
+				document.getElementById('map'), {
+
+					center: location,
+					zoom: 14,
+
+					disableDefaultUI: true,
+					mapTypeControl: false,
+
+					gestureHandling: 'cooperative',
+					styles: styles
+			})
+
+			var marker = new google.maps.Marker({
+
+				position: location,
+				map: map,
+
+				icon: {
+
+					path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+					fillColor: '#ff0000',
+					strokeColor: '#ff0000',
+
+					fillOpacity: 1,
+					strokeWeight: 1,
+					scale: 7
+				}
+			})
+
+			google.maps.event.addListener(marker, 'click', function() {
+
+				var name = 'King’s College London'
+				var vicinity = 'Strand Campus, London WC2R 2LS'
+
+				infowindow.setContent('<div> <p style="font-weight:900;font-family:verdana; margin-bottom:5px">'
+				+name+'</p>'+vicinity+'<br>'+'<a href="img/strandmap.jpg">'+'Detailed Map'+'</a></div>')
+				infowindow.open(map, this)
+			})
+
+			var transitLayer = new google.maps.TransitLayer()
+			transitLayer.setMap(map)
+
+			infowindow = new google.maps.InfoWindow()
+			var service = new google.maps.places.PlacesService(map)
+
+			service.nearbySearch({
+				location: location,
+				radius: 2000,
+				keyword: 'hotel',
+				type: ['lodging']
+
+			}, callback)
+		}
+
+		var styles = [{
+
+			featureType: 'poi.business',
+			stylers: [{visibility: 'off'}]
+		}]
+
+
+		function callback(results, status) {
+			if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+				for (var i = 0; i < results.length; i++) {
+					createMarker(results[i])
+				}
+			}
+		}
+
+		function createMarker(place) {
+			var marker = new google.maps.Marker({
+
+				position: place.geometry.location,
+				map: map,
+
+				icon: {
+
+					path: google.maps.SymbolPath.CIRCLE,
+
+					fillColor: '#383838',
+					strokeColor: '#383838',
+
+					fillOpacity: 1,
+					strokeWeight: 1,
+					scale: 7
+				}
+			})
+
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.setContent('<div> <p style="font-weight:900;font-family:verdana; margin-bottom:5px">'
+				+place.name+'</p>'+place.vicinity+'<br>'+'<a href="https://www.google.co.uk/maps/search/'
+				+place.name.split(' ').join('+')+'/data=!3m1!4b1!4m5!2m4!5m3!5m2!1s2018-06-25!2i2">'+'Booking on Google Maps'+'</a></div>')
+				infowindow.open(map, this)
+			})
+
+		}
+
+						    </script>
+	</div>
+	<div class="docs-section" style="width:80%;margin-left:10%;" id="page-title">
+
+		<svg width="44px" height="44px" viewBox="0 0 400 400">
+			<path fill="red" d="M 100 50 L 200 100 L 300 50 L 200 300 z"/>
+		</svg>
+		<svg height="44px" width="155px">
+			<text x="0" y="21" text-anchor="left"
+			alignment-baseline="central">King's College London</text>
+		</svg>
+		<br></br>
+		<svg width="44px" height="44px" viewBox="0 0 400 400">
+			<circle cx="200" cy="200" r="50"/>
+		</svg>
+		<svg height="44px" width="101px">
+			<text x="0" y="21" text-anchor="left"
+			alignment-baseline="central">Accomodation</text>
+		</svg>
+		<br><br>
+		<table>
+			<tr>
+				<th>
+					<img src="img/underground.png" height=12 width=12></img>
+					London Underground
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Temple, Charing Cross, Embankment,
+					Waterloo, Holborn, Chancery Lane
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<th>
+					<img src="img/nationalrail.png" height=12 width=12></img>
+					National Rail
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Charing Cross, Waterloo,
+					Waterloo East, Blackfriars
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<th>
+					<img src="img/buses.png" height=12 width=12></img>
+					Buses
+				</th>
+			</tr>
+			<tr>
+				<td>
+					1, 4, 26, 59, 68, 76, X68, 168, 171,
+					172, 176, 188, 243, 341, 521, RV1
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<!-- views/partials/navigation.ejs -->
+
+<nav id="primary_nav">
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="background.html">Background</a>
+    </li>
+    <li>
+      <a href="programme.html">Programme</a>
+    </li>
+    <li>
+      <a href="registration.html">Registration</a>
+    </li>
+    <li>
+      <a href="location.html">Location</a>
+    </li>
+    <li>
+      <a href="contact.html">Contact</a>
+    </li>
+    <li id="top-button">
+      <a href="#home">Top</a>
+    </li>
+  </ul>
+</nav>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLN2M83glFf1xRsjf_N741IFilc_6Gxjo&libraries=places&callback=initMap" async defer></script>
+
+<footer>
+	<!-- views/partials/footer.ejs -->
+
+<div class="container">
+  <div id="contact-links">
+    <ul class="list-inline">
+      <li>
+        <a href="mailto:CANES@kcl.ac.uk" target="_blank" >
+          <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="http://twitter.com/CANES_CDT" target="_blank" >
+          <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <p class="copyright">
+    &copy;2017<script>
+      new Date().getFullYear() > 2017 && document.write("-" + new Date().getFullYear());
+    </script>
+    , CANES Programme.
+  </p>
+</div>
+
+</footer>

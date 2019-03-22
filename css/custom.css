@@ -1,0 +1,445 @@
+/* Table of contents
+- Device Adaptation
+- Header
+- Title
+- Sections
+- Navigation
+- Footer
+- Media Queries for Large Screens
+*/
+
+/* Device Adaptation
+-------------------------------------------------- */
+@viewport{
+    zoom: 1.0;
+    width: device-width;
+}
+
+@viewport{
+  zoom: 1.0;
+  width: extend-to-zoom;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* Buttons  */
+.button {
+    max-width: 20rem;
+    padding: 2rem 0rem 3.6rem 0rem
+}
+
+/* Header
+based on https://webdesign.tutsplus.com/articles/a-simple-responsive-mobile-first-navigation--webdesign-6074
+-------------------------------------------------- */
+header {
+
+    text-align: center;
+    background: #1c1c1c;
+    padding: 1rem 2rem;
+    position:  relative;
+    height: 6.5rem;
+}
+
+        /*shorter clearfix http://nicolasgallagher.com/micro-clearfix-hack/*/
+        header:before,
+        header:after {
+            content:"";
+            display:table;
+        }
+
+        header:after {
+            clear:both;
+        }
+
+        /* For IE 6/7 (trigger hasLayout) */
+        header {
+            zoom:1;
+        }
+
+h1.logo a {
+    /*color: #d8d8d8;*/
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: 0.2em;
+    position: absolute;
+    left: 1.3rem;
+    top: 3.1rem;
+  }
+
+div.logo-wrap {
+  float: left;
+  height: 100%;
+  width: 210px;
+  text-align: left;
+}
+
+/* hide mouse over logo by default */
+div.logo-wrap a.logo-rollover { display: none; }
+
+div.logo-wrap:hover > a.logo-rollover { display: inline; }
+
+div.logo-wrap:hover > a.logo-normal { display: none; }
+
+a.logo img {
+  height: 90%;
+  margin-top: 4px;
+}
+
+
+/* button to take mobile users to navigation at bottom of page */
+div.to_nav {
+    background: #4e4e4e;
+    padding: 8px 12px 5px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    position:  absolute;
+    right: 1.3rem;
+    top: 1.3rem;
+}
+
+div.to_nav:hover,
+div.to_nav:focus {
+    color: #1c1c1c;
+    background: #ccc;
+}
+
+div.to_nav > a {
+  display:inline-block;
+  width:100%;
+  height:100%;
+  color: #fff;
+}
+
+/* SITE HEADER
+-------------------------------------------------- */
+#title-banner {
+  width: 100%;
+  position: relative;
+}
+
+#title-banner img {
+  max-width: 100%;
+}
+
+#title-text {
+  position: absolute;
+  padding: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  border:2px solid #ccc;
+  color: #fff;
+  text-align: center;
+}
+
+#tagline {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* index page bullet points */
+
+#conference-overview {
+    font-size: 1.7rem;
+}
+
+.big-list li {
+     margin-bottom: 3rem;
+}
+
+/* Title
+-------------------------------------------------- */
+#page-title {
+  margin-top: 6rem;
+  text-align: center;
+  }
+
+/* Sections
+-------------------------------------------------- */
+.docs-section {
+  /* add space between page sections */
+  margin-top: 4rem;
+}
+
+.main-text{
+  /* text aloignment rules for flowing text */
+  text-align: left;
+}
+
+/* Navigation
+------------------------------------------------- */
+#primary_nav ul {
+  display: block;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  list-style: none;
+  background: #1c1c1c;
+
+}
+
+#primary_nav li a {
+    display: block;
+    padding: 0 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    letter-spacing: 0.1em;
+    line-height: 3em;
+    height: 3em;
+    border-bottom: 1px solid #383838;
+}
+
+#primary_nav li {
+  margin-bottom: 0rem;
+}
+
+#primary_nav li:last-child a {
+    border-bottom: none;
+}
+
+#primary_nav li a:hover,
+#primary_nav li a:focus {
+    color: #1c1c1c;
+    background: #ccc;
+}
+
+/* horizontal lists for navigation */
+.list-inline {
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+.list-inline>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.copyright {
+    text-align: center;
+}
+
+/* logo images
+------------------------------------------------- */
+.logo-banner{
+  /* padding-top: 40.3px; */
+  /* position: relative; */
+}
+
+.logo-container {
+  padding-top: 2.5rem;
+}
+
+.logo-container #epsrc-logo {
+  /* margin-top: 7%; */
+}
+
+.logo-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+#kcl-logo {width: 62%;}
+#epsrc-logo { width: 100%; }
+
+/* Programme --
+------------------------------------------------- */
+
+/* space below speakers list */
+#speaker-list {
+  margin-bottom: 5rem;
+}
+
+/* styling lists of organisers */
+.organizers {
+  text-align: center;
+  float: left;
+}
+
+.organizers ul {
+  list-style-type: none;
+  display:table;
+  margin:0 auto;
+}
+
+.organizer-heading {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Footer
+------------------------------------------------- */
+footer {
+    font-style: italic;
+    text-align: center;
+    font-size: 14px;
+}
+
+.list-inline li {
+  padding: 0px 10px;
+}
+
+.list-inline li a {
+  color: #4e4e4e;
+
+}
+
+.list-inline li a:hover,
+.list-inline li a:focus {
+    color: #ccc;
+}
+
+/* Media Queries for Large Screens
+------------------------------------------------- */
+@media only screen and (min-width: 415px) {
+  #title-text{
+    width: 75%;
+    padding:1rem}
+  #title-text h2 { font-size: 3.0rem }
+  #title-text h3 { font-size: 2.6rem }
+  #title-text h4 { font-size: 2.0rem }
+
+  }
+
+
+@media only screen and (min-width: 550px) {
+  .organizer-heading { font-weight: normal; }
+
+  #kcl-logo {width: 57%;}
+}
+
+@media only screen and (min-width: 785px) {
+
+      /* hide menu button when displaying on large screens */
+      div.to_nav {
+        display: none;
+    }
+
+    .container {
+        position: relative;
+        width: 768px;
+        margin: auto;
+    }
+
+    /* style page navigation at top of screen */
+    #primary_nav {
+        position: absolute;
+        top: 1px;
+        right: 10px;
+        background: none;
+    }
+
+    #primary_nav ul {
+      float: right;
+      margin: 0;
+      margin-top: 1px;
+      padding-left: 5px;
+      overflow: hidden;
+    }
+
+    #primary_nav li {
+      float: left;
+    }
+
+    #primary_nav li:nth-child(4) {
+      clear: left;
+      margin-left: -13px;
+    }
+
+    #primary_nav li a {
+      color: #fff;
+      line-height: 2em;
+      height: 1.9em;
+      border-bottom: none;
+      padding: 6px 10px;
+    }
+
+    #primary_nav li a:hover {
+      color: #cccccc;
+      background: none;
+    }
+
+    /* hide button for navigating to top when menu is top */
+    #top-button {
+      display: none !important;
+    }
+
+    /* add space between end of content and top of footer */
+    footer {
+      margin-top: 4.5rem;
+    }
+
+    /* improve appearance of lists by indenting lines */
+    @supports (-webkit-appearance:none) {
+	.left-aligned-list {
+	    padding-left: 1.4em;
+	    text-indent:-1.4em;
+	}
+    }
+
+    _:-moz-tree-row(hover), .left-aligned-list {
+    	    padding-left: 1.18em;
+	    text-indent:-1.18em;
+    }
+
+}
+
+@media only screen and (min-width: 950px) {
+  #title-text{width: auto;}
+}
+
+ @media only screen and (min-width: 1170px) {
+   #title-text{padding:2rem}
+
+   #primary_nav {
+     margin-top: 24px;
+   }
+
+   #primary_nav li {
+     display: inline;
+     float: none;
+   }
+
+   #primary_nav li:nth-child(4) {
+     margin-left: 0;
+   }
+
+   #primary_nav li a {
+     display: inline;
+   }
+
+/*
+   #title-text {
+     position: absolute;
+     padding: 2rem;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: rgba(0, 0, 0, 0.65);
+     border:2px solid #ccc;
+     color: #fff;
+     text-align: center;
+   }
+   */
+
+}
+
+
+
+
+@media only screen and (min-width: 1440px) {
+  #title-text h2 { font-size: 4.2rem }
+  #title-text h3 { font-size: 3.6rem }
+  #title-text h4 { font-size: 3.0rem }
+
+  }
